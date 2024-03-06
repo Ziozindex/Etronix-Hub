@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etronix Signer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Etronix Signer</h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Signer.html">Signer</a></li>
+            <li><a href="Certificate.html">Certificate</a></li>
+            <li><a href="Discord.html">Discord</a></li>
+          <li><a href="Dns.html">DNS</a></li>
+            <li><a href="BackupInstall.html">Backupinstall</a></li>
+          <li><a href="Soon.html">Soon</a></li>
+          <li><a href="Soon.html">Soon</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IPA Upload Form</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+          }
+
+          .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          }
+
+          h1 {
+            text-align: center;
+            color: #333;
+          }
+
+          form {
+            margin-top: 20px;
+          }
+
+          label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+          }
+
+          input[type="text"],
+          input[type="file"],
+          input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+          }
+
+          input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          }
+
+          input[type="submit"]:hover {
+            background-color: #0056b3;
+          }
+
+          .credits {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+          }
+        </style>
+        </head>
+        <body>
+        <div class="container">
+          <h1>Etronix Hub Signer</h1>
+          <form method="post" action="https://sign.starfiles.co" enctype="multipart/form-data" id="uploadForm" name="uploadForm">
+            <label for="name">App Name</label>
+            <input type="text" id="name" name="name" placeholder="Example: Name Here" required>
+
+            <label for="p12">.P12 File</label>
+            <input type="file" id="p12" name="p12" accept=".p12" required>
+
+            <label for="mobileprovision">.MobileProvision File</label>
+            <input type="file" id="mobileprovision" name="mobileprovision" accept=".mobileprovision" required>
+
+            <label for="ipa">.IPA File</label>
+            <input type="file" id="ipa" name="ipa" accept=".ipa" required>
+
+            <label for="pass">Password of the certificate</label>
+            <input type="password" id="pass" name="password" placeholder="Example: AppleP12.com" required>
+
+            <input type="submit" class="button" value="SIGN">
+          </form>
+          <div class="credits">
+            Credits to Starfiles for the API and nojws for the website design.
+          </div>
+        </div>
+        <script>
+        document.getElementById("uploadForm").addEventListener("submit", function(event){
+          event.preventDefault(); // Prevent the form from submitting normally
+
+          // Gather form data
+          var formData = new FormData(this);
+
+          // Make a POST request to the IPA signer API
+          fetch("https://sign.starfiles.co", {
+            method: "POST",
+            body: formData
+          })
+          .then(response => {
+            if (response.ok) {
+              // If the response is successful, redirect to the signed IPA file
+              window.location.href = response.url;
+            } else {
+              // If there's an error, display it
+              alert("Error: " + response.statusText);
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert("An error occurred. Please try again later.");
+          });
+        });
+        </script>
+        </body>
+        </html>
+    </main>
+
+</body>
+</html>
